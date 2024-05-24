@@ -1,4 +1,4 @@
-// works but eats a lot of memory and has poor runtime
+// retested some other algs and this is the fastest according to leetcode
 
 public class Solution {
     public int RemoveElement(int[] nums, int val) {
