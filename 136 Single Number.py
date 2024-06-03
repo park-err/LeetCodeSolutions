@@ -4,23 +4,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # this works but is incredibly slow
-        # times out if list is too long
 
+        # works better and faster than last submission
+        # issue with space complexity
+        
         if len(nums) == 1:
             return nums[0]
 
-        single = False
+        nums = sorted(nums)
 
-        for i in range(0, len(nums)):
-            for j in range(0, len(nums)):
-                if (nums[i] == nums[j]) ^ (i == j):
-                    single = False
-                    break
-                else:
-                    single = True
-            if single:
+        for i in range(0, len(nums) - 1):
+            if (nums[i] == nums[i+1]) or (nums[i-1] == nums[i]):
+                continue
+            else:
                 return nums[i]
         
 
-        return -1
+        return nums[len(nums) - 1]
