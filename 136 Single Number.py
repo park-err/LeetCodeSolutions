@@ -5,19 +5,16 @@ class Solution(object):
         :rtype: int
         """
 
-        # works better and faster than last submission
-        # issue with space complexity
+        # uses bitwise xor to find the result
+        # 0 ^ num = num
+        # num ^ num = 0
+        # when this runs, the result left over will = num not duplicated in list
+        # how it works
+        # https://www.youtube.com/watch?v=xQPxiajgZLY
+
+        result = 0
+
+        for i in nums:
+            result ^= i
         
-        if len(nums) == 1:
-            return nums[0]
-
-        nums = sorted(nums)
-
-        for i in range(0, len(nums) - 1):
-            if (nums[i] == nums[i+1]) or (nums[i-1] == nums[i]):
-                continue
-            else:
-                return nums[i]
-        
-
-        return nums[len(nums) - 1]
+        return result
