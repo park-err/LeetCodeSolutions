@@ -1,20 +1,18 @@
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+def permute(nums):
 
-        # uses bitwise xor to find the result
-        # 0 ^ num = num
-        # num ^ num = 0
-        # when this runs, the result left over will = num not duplicated in list
-        # how it works
-        # https://www.youtube.com/watch?v=xQPxiajgZLY
-
-        result = 0
-
-        for i in nums:
-            result ^= i
+    permutations = []
+    for i in range(len(nums)):
+        for j in range(len(nums)):
+            if i != j:
+                t = nums
+                temp = t[i]
+                t[i] = t[j]
+                t[j] = temp
+                permutations.append(t)
+            
         
-        return result
+    
+    return permutations
+
+nums = [1,2,3]
+print(permute(nums))
